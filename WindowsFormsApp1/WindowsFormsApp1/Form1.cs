@@ -25,18 +25,15 @@ namespace WindowsFormsApp1
             int count = (int)Math.Ceiling((Xmax - Xmin) / Step);
             double[] x = new double[count];
             double[] y1 = new double[count];
-            double[] y2 = new double[count];
             for (int i = 0; i < count; i++)
             {
                 x[i] = Xmin + Step*i;
-                y1[i] = Math.Sin(x[i]);
-                y2[i] = Math.Cos(x[i]);
+                y1[i] = 0.0025 * 2.3 * Math.Pow(x[i], 3) + Math.Sqrt(x[i] + Math.Pow(Math.E, 0.82));
             }
             chart1.ChartAreas[0].AxisX.Minimum = Xmin;
             chart1.ChartAreas[0].AxisX.Maximum = Xmax;
             chart1.ChartAreas[0].AxisX.MajorGrid.Interval = Step;
             chart1.Series[0].Points.DataBindXY(x, y1);
-            chart1.Series[1].Points.DataBindXY(x, y2);
 
 
         }
